@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>URL Shortener</h1>
+    <form action="/url" method="POST">
+      <label for="url">Enter Original URL</label>
+      <input type="text" name="url" id="url" placeholder="www.Example.com" />
+      <button type="submit">Generate</button>
+    </form>
+    <table>
+      <thead>
+        <tr>
+        <th>Original ID</th> 
+        <th>short ID</th>
+        <th>CLicks</th> 
+        </tr>
+      </thead>
+      <tbody>
+        <% if (urls) {   urls.forEach(element => { %>
+        <tr>
+          <td> <a href="<%= element.redirectUrl %>"><%= element.redirectUrl%> </a></td>
+          <td> <a href="http://localhost:8001/url/<%= element.shortId %>">
+            http://localhost:8001/url/<%= element.shortId%>
+        </a></td>
+          <td><%= element.visitHistory.length %></td>
+        </tr>
+     <%   }); }   %> 
+     
+
+      </tbody>
+    </table>
+  </body>
+</html>
