@@ -1,16 +1,16 @@
 const express = require("express");
 const UrlRouter = require("./routes/url");
-const { urlModel } = require("./model/url");
 const path = require("path");
 const staticRouter = require("./staticRoute/staticRoute");
 const { connectToMongoDb } = require("./connect");
-
-const PORT = 8001;
+const dotenv = require("dotenv");
+dotenv.config();
+const PORT = process.env.PORT || 8001  ;
 
 //mongo DB connection
-connectToMongoDb("mongodb://127.0.0.1:27017/urlShortner").then(() =>
+connectToMongoDb(process.env.MONGO_URI).then(() =>
   console.log("MongoDb connected ! ")
-);
+).catch(err => console.log(err))
 
 //route handling (middlewares)
 const app = express();
