@@ -5,15 +5,17 @@ const dotenv = require("dotenv");
 dotenv.config();
 const PORT = process.env.PORT || 8001  ;
 
+//mongo DB connection
+connectToMongoDb(process.env.MONGO_URI,{ useNewUrlParser: true, useUnifiedTopology: true }).then(() =>
+  console.log("MongoDb connected ! ")
+).catch(err => console.log(err))
+
 //routers
 const UrlRouter = require("./routes/url");
 const staticRouter = require("./staticRoute/staticRoute");
 const {userRouter} = require("./routes/user")
 
-//mongo DB connection
-connectToMongoDb(process.env.MONGO_URI,{ useNewUrlParser: true, useUnifiedTopology: true }).then(() =>
-  console.log("MongoDb connected ! ")
-).catch(err => console.log(err))
+
 
 //route handling (middlewares)
 const app = express();
