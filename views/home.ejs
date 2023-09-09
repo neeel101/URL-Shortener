@@ -22,13 +22,13 @@
       </thead> 
       <tbody>
         <% if (locals.urls) { urls.forEach(element => { %>
-        <tr>
+        <tr>   
           <td>
             <a href="<%= element.redirectUrl %>"> <%= element.redirectUrl%> </a>
           </td>
           <td>
-            <a href="http://localhost:8001/url/<%= element.shortId %>">
-              http://localhost:8001/url/<%= element.shortId %>
+            <a href="https://shortner-rqru.onrender.com/url/<%= element.shortId %>">
+              https://shortner-rqru.onrender.com/url/<%= element.shortId %>
             </a>
           </td>
           <td><%= element.visitHistory.length %></td>
