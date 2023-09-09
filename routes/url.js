@@ -10,4 +10,5 @@ const {
 router.post("/", handleCreateShortUrl);
 router.get("/analytics/:shortId", handleUserAnalytics);
 router.get("/:shortid", handleRedirectRequest);
+
 module.exports = router; 

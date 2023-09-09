@@ -13,25 +13,27 @@
       <button type="submit">Generate</button>
     </form>
     <table>
-      <thead>
+      <thead> 
         <tr>
-        <th>Original ID</th> 
-        <th>short ID</th>
-        <th>CLicks</th> 
+          <th>Original ID</th>
+          <th>short ID</th>
+          <th>CLicks</th>
         </tr>
-      </thead>
+      </thead> 
       <tbody>
-        <% if (urls) {   urls.forEach(element => { %>
+        <% if (locals.urls) { urls.forEach(element => { %>
         <tr>
-          <td> <a href="<%= element.redirectUrl %>"><%= element.redirectUrl%> </a></td>
-          <td> <a href="http://localhost:8001/url/<%= element.shortId %>">
-            http://localhost:8001/url/<%= element.shortId%>
-        </a></td>
+          <td>
+            <a href="<%= element.redirectUrl %>"> <%= element.redirectUrl%> </a>
+          </td>
+          <td>
+            <a href="http://localhost:8001/url/<%= element.shortId %>">
+              http://localhost:8001/url/<%= element.shortId %>
+            </a>
+          </td>
           <td><%= element.visitHistory.length %></td>
         </tr>
-     <%   }); }   %> 
-     
-
+        <% }); } %>
       </tbody>
     </table>
   </body>

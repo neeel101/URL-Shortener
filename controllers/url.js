@@ -35,7 +35,7 @@ async function handleRedirectRequest(req, res) {
           timestamp: Date.now(),
         },
       },
-    }
+    } 
   );
 
   res.redirect(entry.redirectUrl);
@@ -48,7 +48,7 @@ async function handleStaticResponse(req, res) {
 }
 module.exports = {
   handleCreateShortUrl,
-  handleUserAnalytics,
+  handleUserAnalytics, 
   handleRedirectRequest,
   handleStaticResponse,
 };

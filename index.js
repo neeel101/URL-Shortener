@@ -1,14 +1,17 @@
 const express = require("express");
-const UrlRouter = require("./routes/url");
 const path = require("path");
-const staticRouter = require("./staticRoute/staticRoute");
 const { connectToMongoDb } = require("./connect");
 const dotenv = require("dotenv");
 dotenv.config();
 const PORT = process.env.PORT || 8001  ;
 
+//routers
+const UrlRouter = require("./routes/url");
+const staticRouter = require("./staticRoute/staticRoute");
+const {userRouter} = require("./routes/user")
+
 //mongo DB connection
-connectToMongoDb(process.env.MONGO_URI).then(() =>
+connectToMongoDb(process.env.MONGO_URI,{ useNewUrlParser: true, useUnifiedTopology: true }).then(() =>
   console.log("MongoDb connected ! ")
 ).catch(err => console.log(err))
 
@@ -19,7 +22,8 @@ app.use(express.json());
 
 //routing (static and dynamic)
 app.use("/url", UrlRouter); 
-app.use("/", staticRouter); 
+app.use("/", staticRouter);
+app.use("/user", userRouter);
 
 //server side rendering components
 app.set("view engine", "ejs");
