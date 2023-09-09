@@ -12,7 +12,7 @@ try {
     useUnifiedTopology: true,
   }).then(() => console.log("MongoDb connected ! "));
 } catch (err) {
-  (err) => console.log(err);
+  (err) => console.log("Mongo Connection error", err);
 }
 
 //listen
