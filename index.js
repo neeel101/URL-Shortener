@@ -12,11 +12,15 @@ try {
     useUnifiedTopology: true,
   }).then(() => console.log("MongoDb connected ! "));
 } catch (err) {
-  (err) => console.log("Mongo Connection error", err);
+  (err) => console.log("MY Mongo Connection error", err);
 }
 
 //listen
 app.listen(PORT, () => console.log("Express Server started on PORT", PORT));
+
+//server side rendering components
+app.set("view engine", "ejs");
+app.set("views", path.resolve("./views"));
 
 //routers
 const UrlRouter = require("./routes/url");
@@ -33,6 +37,4 @@ app.use("/url", UrlRouter);
 app.use("/", staticRouter);
 app.use("/user", userRouter);
 
-//server side rendering components
-app.set("view engine", "ejs");
-app.set("views", path.resolve("./views"));
+

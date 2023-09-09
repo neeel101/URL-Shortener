@@ -46,6 +46,7 @@ async function handleStaticResponse(req, res) {
 
   return res.render("home", { urls });
 }
+
 module.exports = {
   handleCreateShortUrl,
   handleUserAnalytics, 
